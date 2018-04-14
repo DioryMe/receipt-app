@@ -1,0 +1,28 @@
+  {
+  "name": "diograph-receipt-app",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "start": "npx webpack && cp ./app/index.html ./dist && npx webpack-dev-server --port 4205 --content-base dist/ --inline --hot",
+    "test": "npx tsc && npx jasmine JASMINE_CONFIG_PATH=jasmine.json"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jasmine": "*",
+    "@types/node": "*",
+    "@types/react": "*",
+    "ts-loader": "*",
+    "typescript": "*",
+    "jasmine": "*",
+    "webpack": "*",
+    "webpack-cli": "*",
+    "webpack-dev-server": "*",
+    "enzyme": "*",
+    "enzyme-adapter-react-16": "*"
+  },
+  "dependencies": {
+    "react": "*",
+    "react-dom": "*"
+  }
+}
