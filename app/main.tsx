@@ -1,8 +1,5 @@
 import * as React from 'react';
-import { Switch, Route, Link } from 'react-router-dom'
-
-import { Create } from './create'
-import { Search } from './search'
+import { Link } from 'react-router-dom'
 
 export class Main extends React.Component {
 
@@ -14,19 +11,17 @@ export class Main extends React.Component {
   render() {
     return (
       <div>
-
         <div>
-          <Link to="/">Create</Link>
+          <Link to="/receipt/new">Create new</Link>
         </div>
         <div>
-          <Link to="/search">Search</Link>
         </div>
-
         <div>
-          <Switch>
-            <Route exact path='/' component={Create}/>
-            <Route path='/search' component={Search}/>
-          </Switch>
+          <ul>
+            <li><Link to="/product/123-abc">Product 1</Link></li>
+            <li><Link to="/receipt/123-abc">Receipt 1</Link></li>
+            <li><Link to="/place/123-abc">Place 1</Link></li>
+          </ul>
         </div>
       </div>
     )
