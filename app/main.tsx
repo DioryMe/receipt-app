@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
+import { DiographStore } from 'diograph-store'
 
-export class Main extends React.Component {
+export class Main extends React.Component<any, any> {
 
   constructor(props) {
     super(props)
@@ -9,11 +10,13 @@ export class Main extends React.Component {
   }
 
   render() {
+    if (this.state.newReceiptId) {
+      return <Redirect push to={"/receipt/" + this.state.newReceiptId} />
+    }
+
     return (
       <div>
-        <div>
-          <Link to="/receipt/new">Create new</Link>
-        </div>
+        <div onClick={event => this.createNewAndRedirect()}>Create new</div>
         <div>
         </div>
         <div>
@@ -27,4 +30,12 @@ export class Main extends React.Component {
     )
   }
 
+  createNewAndRedirect() {
+    // return DiographStore.createDiory({type: "receipt"}).then(diory => {
+      let diory = {id: "abc-123"}
+      console.log("New diory created (id: " + diory.id + ")")
+      this.setState({newReceiptId: diory.id})
+    //   return diory
+    // })
+  }
 }
