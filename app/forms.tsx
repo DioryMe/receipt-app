@@ -9,38 +9,48 @@ export class ReceiptForm extends React.Component<any, any> {
 
   constructor(props) {
     super(props)
-    this.state = { editMode: true }
+    let model = {
+      id: this.props.match.params.id,
+      name: "New diory",
+      type: "receipt",
+      date: "2018-04-12"
+    }
+    this.state = { editMode: true, model: model }
   }
 
   render() {
-    let editModeBlock
-    if (this.state.editMode) {
-      editModeBlock = (
-        <div>
-          <div>---</div>
-          <div>Add upload receipt image</div>
-          <div>Add place</div>
-          <div>Add product</div>
-        </div>
-      )
+
+    if(this.state.editMode) {
+      let headerBlock = <i onClick={ event => this.toggleEditMode(event)}>(Edit mode OFF)</i>
     } else {
-      editModeBlock = (
-        <div>
-          <div>---</div>
-          <div>No image available</div>
-          <div>No place</div>
-          <div>No product</div>
-        </div>
-      )
+      let headerBlock = (<div>
+        <Link to="/">(Home)</Link> ---&nbsp;
+        <i onClick={ event => this.toggleEditMode(event)}>(Edit mode ON)</i>
+      </div>)
     }
+
+    let uploadBlock = this.state.editMode ? <div>DiographUpload component</div> : <div>No image available</div>
+
+    let nameBlock = this.state.editMode ? <input defaultValue={this.state.model.name} /> : this.state.model.name
+    let dateBlock = this.state.editMode ? <input defaultValue={this.state.model.date} /> : this.state.model.date
+
+    let placeBlock = this.state.editMode ? <div>SearchCreate for Place</div> : <div>No place for this receipt</div>
+
+    let productBlock = this.state.editMode ? <div>SearchCreate for Product</div> : <div>No place for this receipt</div>
 
     return (
       <div>
-        <div><Link to="/">(Home)</Link></div>
-        <div>ReceiptForm</div>
-        <div>{this.props.match.params.id}</div>
-        <div onClick={ event => this.toggleEditMode(event)}>Edit mode</div>
-        {editModeBlock}
+        {headerBlock}
+        <div>---</div>
+        {uploadBlock}
+        <div>---</div>
+        <div>ID: {this.props.match.params.id}</div>
+        <div>NAME: {nameBlock}</div>
+        <div>DATE: {dateBlock}</div>
+        <div>---</div>
+        {placeBlock}
+        <div>---</div>
+        {productBlock}
       </div>
     )
   }
