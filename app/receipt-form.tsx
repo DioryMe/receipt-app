@@ -19,11 +19,11 @@ export class ReceiptForm extends React.Component<any, any> {
   }
 
   render() {
-
+    let headerBlock
     if(this.state.editMode) {
-      let headerBlock = <i onClick={ event => this.toggleEditMode(event)}>(Edit mode OFF)</i>
+      headerBlock = <i onClick={ event => this.toggleEditMode(event)}>(Edit mode OFF)</i>
     } else {
-      let headerBlock = (<div>
+      headerBlock = (<div>
         <Link to="/">(Home)</Link> ---&nbsp;
         <i onClick={ event => this.toggleEditMode(event)}>(Edit mode ON)</i>
       </div>)
@@ -57,44 +57,6 @@ export class ReceiptForm extends React.Component<any, any> {
 
   toggleEditMode(event) {
     this.setState({editMode: !this.state.editMode})
-  }
-
-}
-
-export class PlaceForm extends React.Component<any> {
-
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-
-  render() {
-    return (
-      <div>
-        <div><Link to="/">(X)</Link></div>
-        <div>PlaceForm</div>
-        <div>{this.props.match.params.id}</div>
-      </div>
-    )
-  }
-
-}
-
-export class ProductForm extends React.Component<any> {
-
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-
-  render() {
-    return (
-      <div>
-        <div><Link to="/">(X)</Link></div>
-        <div>ProductForm</div>
-        <div>{this.props.match.params.id}</div>
-      </div>
-    )
   }
 
 }

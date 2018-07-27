@@ -2,7 +2,9 @@ import * as React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
 import { Main } from './main'
-import { ReceiptForm, PlaceForm, ProductForm } from './forms'
+import { ReceiptForm } from './receipt-form'
+import { PlaceForm } from './place-form'
+import { ProductForm } from './product-form'
 
 export interface ReceiptAppProps { }
 export interface ReceiptAppState { }

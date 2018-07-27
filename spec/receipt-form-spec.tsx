@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { configure, shallow } from 'enzyme'
 import * as Adapter from 'enzyme-adapter-react-16';
-import { ReceiptForm } from '../app/forms'
+import { ReceiptForm } from '../app/receipt-form'
 import { DiographStore } from 'diograph-store'
 
 declare var Promise: any;
