@@ -23,6 +23,7 @@ export class Main extends React.Component<any, any> {
           <ul>
             <li><Link to="/product/123-abc">Product 1</Link></li>
             <li><Link to="/receipt/123-abc">Receipt 1</Link></li>
+            <li><Link to="/receipt/123-abc/edit">Receipt 2 (EDIT)</Link></li>
             <li><Link to="/place/123-abc">Place 1</Link></li>
           </ul>
         </div>

@@ -15,7 +15,10 @@ export class ReceiptForm extends React.Component<any, any> {
       type: "receipt",
       date: "2018-04-12"
     }
-    this.state = { editMode: true, model: model }
+
+    let editMode = this.props.match.params.edit ? true : false
+
+    this.state = { editMode: editMode, model: model }
   }
 
   render() {

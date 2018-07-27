@@ -20,8 +20,11 @@ export class DiographReceiptApp extends React.Component<ReceiptAppProps, Receipt
     return (
       <div>
         <Switch>
+          <Route path='/receipt/:id/:edit' component={ReceiptForm} />
           <Route path='/receipt/:id' component={ReceiptForm} />
+          <Route path='/place/:id/edit' component={PlaceForm}/>
           <Route path='/place/:id' component={PlaceForm}/>
+          <Route path='/product/:id/:edit' component={ProductForm}/>
           <Route path='/product/:id' component={ProductForm}/>
           <Route component={Main}/>
         </Switch>
