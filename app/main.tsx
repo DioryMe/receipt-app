@@ -31,11 +31,11 @@ export class Main extends React.Component<any, any> {
   }
 
   createNewAndRedirect() {
-    // return DiographStore.createDiory({type: "receipt"}).then(diory => {
-      let diory = {id: "abc-123"}
+    return DiographStore.createDiory({type: "receipt"}).then(diory => {
+      // let diory = {id: "abc-123"}
       console.log("New diory created (id: " + diory.id + ")")
       this.setState({newReceiptId: diory.id})
-    //   return diory
-    // })
+      return diory
+    })
   }
 }
