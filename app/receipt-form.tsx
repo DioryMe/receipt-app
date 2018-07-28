@@ -30,6 +30,10 @@ export class ReceiptForm extends React.Component<any, any> {
         <Link to="/">(Home)</Link> ---&nbsp;
         <i onClick={ event => this.toggleEditMode(event)}>(Edit mode ON)</i>
       </div>)
+      // TODO: Toggle via changing route instead of toggleEditMode
+      // <Link to={`/receipt/${this.state.model.id}`}>(Edit mode OFF)</Link>
+      // <Link to={`/receipt/${this.state.model.id}/edit`}>(Edit mode ON)</Link>
+      // => with my first attempt: changed only route but didn't toggle edit mode...
     }
 
     let uploadBlock = this.state.editMode ? <div>DiographUpload component</div> : <div>No image available</div>
