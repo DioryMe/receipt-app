@@ -9,6 +9,10 @@ export class ReceiptForm extends React.Component<any, any> {
 
   constructor(props) {
     super(props)
+
+    let editMode = this.props.match.params.edit ? true : false
+
+    // TODO: Remove this when DiographStore.getDiory() is implemented in componentWillMount
     let model = {
       id: this.props.match.params.id,
       name: "New diory",
@@ -16,9 +20,16 @@ export class ReceiptForm extends React.Component<any, any> {
       date: "2018-04-12"
     }
 
-    let editMode = this.props.match.params.edit ? true : false
-
     this.state = { editMode: editMode, model: model }
+  }
+
+  componentWillMount() {
+    /*
+    DiographStore.getDiory(this.props.match.params.id).then(diory => {
+      this.setState(model: diory)
+    })
+    */
+    console.log(`DiographStore.getDiory("${this.props.match.params.id}")`)
   }
 
   render() {
@@ -52,7 +63,7 @@ export class ReceiptForm extends React.Component<any, any> {
         {uploadBlock}
         <div>---</div>
         <div>ID: {this.props.match.params.id}</div>
-        <div>NAME: {nameBlock}</div>
+        <div id="name">NAME: {nameBlock}</div>
         <div>DATE: {dateBlock}</div>
         <div>---</div>
         {placeBlock}

@@ -10,9 +10,14 @@ describe('<ReceiptForm />', () => {
   let wrapper, component, secrets
   configure({ adapter: new Adapter() })
 
-  it('renders diory name when diory found', () => {
+  // This should fail as no mention of DiographStore.getDiory() yet anywhere...
+  // => but shouldn't fail for this.props.match being undefined... ("Cannot read property 'params' of undefined")
+  it('calls DiographStore.getDiory when modelId is given', () => {
     let getDiorySpy = spyOn(DiographStore, "getDiory").and.returnValue({name: "Found diory"})
 
+    // TODO: Would <ReceiptForm /> be enough?
+    // - modelId comes from the url
+    // - editMode comes from the url
     wrapper = shallow(
       <ReceiptForm
         modelId="123-abc"
@@ -25,10 +30,11 @@ describe('<ReceiptForm />', () => {
     expect(componentText).toEqual("Found diory")
   })
 
-  it('calls createDiory if diory not found', () => {
+  /*
+  it('redirects to root path if diory is not found by modelId', () => {
     spyOn(DiographStore, "getDiory").and.returnValue(null)
-    let createDiorySpy = spyOn(DiographStore, "createDiory")
-    expect(createDiorySpy.calls.argsFor(0)).toEqual([{name: "New receipt"}])
+    expect(location).toEqual("/")
   })
+  */
 
 })
