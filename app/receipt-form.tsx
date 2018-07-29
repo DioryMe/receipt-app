@@ -24,11 +24,9 @@ export class ReceiptForm extends React.Component<any, any> {
   }
 
   componentWillMount() {
-    /*
     DiographStore.getDiory(this.props.match.params.id).then(diory => {
-      this.setState(model: diory)
+      this.setState({model: diory})
     })
-    */
     console.log(`DiographStore.getDiory("${this.props.match.params.id}")`)
   }
 

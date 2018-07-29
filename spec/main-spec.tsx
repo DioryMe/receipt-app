@@ -4,8 +4,8 @@ import * as Adapter from 'enzyme-adapter-react-16';
 import { Main } from '../app/main'
 import { DiographStore } from 'diograph-store'
 
+// TODO: Couldn't make helpers files to load/work...this should be defined there...
 declare var Promise: any;
-
 let genericPromise = (content={}) => {
   return new Promise(resolve => { resolve(content) })
 }

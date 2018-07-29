@@ -5,8 +5,11 @@ import { ReceiptForm } from '../app/receipt-form'
 import { DiographStore } from 'diograph-store'
 import { MemoryRouter, Route } from 'react-router';
 
+// TODO: Couldn't make helpers files to load/work...this should be defined there...
 declare var Promise: any;
-
+let genericPromise = (content={}) => {
+  return new Promise(resolve => { resolve(content) })
+}
 
 describe('<ReceiptForm />', () => {
   let wrapper, component, secrets
@@ -16,19 +19,19 @@ describe('<ReceiptForm />', () => {
     this.jsdom = require('jsdom-global')()
   })
 
-  it('calls DiographStore.getDiory when modelId is given', () => {
-    let getDiorySpy = spyOn(DiographStore, "getDiory").and.returnValue({name: "Found diory"})
+  fit('calls DiographStore.getDiory when modelId is given', () => {
+    let id = "123-abc"
+    let getDiorySpy = spyOn(DiographStore, "getDiory").and.returnValue(genericPromise({id: id}))
 
     wrapper = mount(
-      <MemoryRouter initialEntries={[ '/receipt/123-abc' ]}>
+      <MemoryRouter initialEntries={[ `/receipt/${id}` ]}>
         <Route path='/receipt/:id' component={ReceiptForm} />
       </MemoryRouter>
     )
-    component = wrapper.instance()
+    component = wrapper.find(ReceiptForm).instance()
 
-    expect(getDiorySpy.calls.argsFor(0)).toEqual(["123-abc"])
-    let componentText = wrapper.find('#name').text();
-    expect(componentText).toEqual("Found diory")
+    expect(getDiorySpy.calls.argsFor(0)).toEqual([id])
+    expect(component.state.model.id).toEqual(id)
   })
 
   it('has edit mode ON when /receipt/123-abc/edit', () => {
