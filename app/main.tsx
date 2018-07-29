@@ -11,12 +11,12 @@ export class Main extends React.Component<any, any> {
 
   render() {
     if (this.state.newReceiptId) {
-      return <Redirect push to={"/receipt/" + this.state.newReceiptId} />
+      return <Redirect push to={`/receipt/${this.state.newReceiptId}/edit`} />
     }
 
     return (
       <div>
-        <div onClick={event => this.createNewAndRedirect()}>Create new</div>
+        <button style={{margin: "10px"}} onClick={event => this.createNewAndRedirect()}>Create new receipt</button>
         <div>
         </div>
         <div>
@@ -32,11 +32,11 @@ export class Main extends React.Component<any, any> {
   }
 
   createNewAndRedirect() {
-    return DiographStore.createDiory({type: "receipt"}).then(diory => {
-      // let diory = {id: "abc-123"}
+    // return DiographStore.createDiory({type: "receipt"}).then(diory => {
+      let diory = {id: "abc-123"}
       console.log("New diory created (id: " + diory.id + ")")
       this.setState({newReceiptId: diory.id})
       return diory
-    })
+    // })
   }
 }

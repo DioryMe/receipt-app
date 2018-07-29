@@ -12,22 +12,20 @@ export class ReceiptForm extends React.Component<any, any> {
 
     let editMode = this.props.match.params.edit ? true : false
 
-    // TODO: Remove this when DiographStore.getDiory() is implemented in componentWillMount
-    let model = {
-      id: this.props.match.params.id,
-      name: "New diory",
-      type: "receipt",
-      date: "2018-04-12"
-    }
-
-    this.state = { editMode: editMode, model: model }
+    this.state = { editMode: editMode}
   }
 
   componentWillMount() {
-    DiographStore.getDiory(this.props.match.params.id).then(diory => {
+    // DiographStore.getDiory(this.props.match.params.id).then(diory => {
+      // TODO: Remove this when DiographStore.getDiory() is implemented in componentWillMount
+      let diory = {
+        id: this.props.match.params.id,
+        name: "New diory",
+        type: "receipt",
+        date: "2018-04-12"
+      }
       this.setState({model: diory})
-    })
-    console.log(`DiographStore.getDiory("${this.props.match.params.id}")`)
+    // })
   }
 
   render() {
@@ -52,7 +50,7 @@ export class ReceiptForm extends React.Component<any, any> {
 
     let placeBlock = this.state.editMode ? <div>SearchCreate for Place</div> : <div>No place for this receipt</div>
 
-    let productBlock = this.state.editMode ? <div>SearchCreate for Product</div> : <div>No place for this receipt</div>
+    let productBlock = this.state.editMode ? <div>SearchCreate for Product</div> : <div>No products for this receipt</div>
 
     return (
       <div>
