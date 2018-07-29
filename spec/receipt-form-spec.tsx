@@ -12,16 +12,15 @@ let genericPromise = (content={}) => {
 }
 
 describe('<ReceiptForm />', () => {
-  let wrapper, component, secrets
+  let wrapper, component
+  let id, getDiorySpy
   configure({ adapter: new Adapter() })
 
   beforeEach(() => {
     this.jsdom = require('jsdom-global')()
-  })
 
-  fit('calls DiographStore.getDiory when modelId is given', () => {
-    let id = "123-abc"
-    let getDiorySpy = spyOn(DiographStore, "getDiory").and.returnValue(genericPromise({id: id}))
+    id = "123-abc"
+    getDiorySpy = spyOn(DiographStore, "getDiory").and.returnValue(genericPromise({id: id}))
 
     wrapper = mount(
       <MemoryRouter initialEntries={[ `/receipt/${id}` ]}>
@@ -29,33 +28,34 @@ describe('<ReceiptForm />', () => {
       </MemoryRouter>
     )
     component = wrapper.find(ReceiptForm).instance()
+  })
 
+  it('calls DiographStore.getDiory when modelId is given', () => {
     expect(getDiorySpy.calls.argsFor(0)).toEqual([id])
     expect(component.state.model.id).toEqual(id)
   })
 
-  it('has edit mode ON when /receipt/123-abc/edit', () => {
-    wrapper = mount(
-      <MemoryRouter initialEntries={[ '/receipt/123-abc' ]}>
-        <Route path='/receipt/:id' component={ReceiptForm} />
-      </MemoryRouter>
-    )
-    component = wrapper.instance()
-
+  it('has a link to put "Edit mode ON"', () => {
     let componentText = wrapper.find('div').first().text();
     expect(componentText).toContain("Edit mode ON")
   })
 
-  it('has edit mode OFF when /receipt/123-abc', () => {
-    wrapper = mount(
-      <MemoryRouter initialEntries={[ '/receipt/123-abc/edit' ]}>
-        <Route path='/receipt/:id/:edit' component={ReceiptForm} />
-      </MemoryRouter>
-    )
-    component = wrapper.instance()
+  describe("when in edit mode", () => {
 
-    let componentText = wrapper.find('div').first().text();
-    expect(componentText).toContain("Edit mode OFF")
+    beforeEach(() => {
+      wrapper = mount(
+        <MemoryRouter initialEntries={[ `/receipt/${id}/edit` ]}>
+          <Route path='/receipt/:id/:edit' component={ReceiptForm} />
+        </MemoryRouter>
+      )
+      component = wrapper.find(ReceiptForm).instance()
+    })
+
+    it('has a link to put "Edit mode OFF"', () => {
+      let componentText = wrapper.find('div').first().text();
+      expect(componentText).toContain("Edit mode OFF")
+    })
+
   })
 
   /*
