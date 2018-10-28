@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom'
 import { DiographStore } from 'diograph-store'
+import { DiographSearchCreate } from "diograph-search-create"
 
 // export interface ReceiptFormProps { modelId: string, editMode: string }
 // export class ReceiptForm extends React.Component<ReceiptFormProps & RouteProps> {
@@ -48,9 +49,9 @@ export class ReceiptForm extends React.Component<any, any> {
     let nameBlock = this.state.editMode ? <input defaultValue={this.state.model.name} /> : this.state.model.name
     let dateBlock = this.state.editMode ? <input defaultValue={this.state.model.date} /> : this.state.model.date
 
-    let placeBlock = this.state.editMode ? <div>SearchCreate for Place</div> : <div>No place for this receipt</div>
+    let placeBlock = this.state.editMode ? <DiographSearchCreate></DiographSearchCreate> : <div>No place for this receipt</div>
 
-    let productBlock = this.state.editMode ? <div>SearchCreate for Product</div> : <div>No products for this receipt</div>
+    let productBlock = this.state.editMode ? <DiographSearchCreate></DiographSearchCreate> : <div>No products for this receipt</div>
 
     return (
       <div>
