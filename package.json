@@ -1,4 +1,4 @@
-  {
+{
   "name": "diograph-receipt-app",
   "version": "0.0.1",
   "description": "",
@@ -23,12 +23,13 @@
     "enzyme-adapter-react-16": "1.1.1",
     "jsdom": "11.12.0",
     "jsdom-global": "3.0.2",
-    "diograph-search-create": "*"
+    "diograph-search-create": "*",
+    "diograph-upload": "../diograph-upload"
   },
   "dependencies": {
+    "diograph-store": "*",
     "react": "16.4.1",
     "react-dom": "16.4.1",
-    "react-router-dom": "4.3.1",
-    "diograph-store": "*"
+    "react-router-dom": "4.3.1"
   }
 }

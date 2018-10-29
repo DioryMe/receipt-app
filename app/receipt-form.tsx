@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Link } from 'react-router-dom'
 import { DiographStore } from 'diograph-store'
 import { DiographSearchCreate } from "diograph-search-create"
+import { DiographUpload } from "diograph-upload"
 
 // export interface ReceiptFormProps { modelId: string, editMode: string }
 // export class ReceiptForm extends React.Component<ReceiptFormProps & RouteProps> {
@@ -44,7 +45,7 @@ export class ReceiptForm extends React.Component<any, any> {
       // => with my first attempt: changed only route but didn't toggle edit mode...
     }
 
-    let uploadBlock = this.state.editMode ? <div>DiographUpload component</div> : <div>No image available</div>
+    let uploadBlock = this.state.editMode ? <DiographUpload secrets={{master: "testtoken"}}></DiographUpload> : <div>No image available</div>
 
     let nameBlock = this.state.editMode ? <input defaultValue={this.state.model.name} /> : this.state.model.name
     let dateBlock = this.state.editMode ? <input defaultValue={this.state.model.date} /> : this.state.model.date
