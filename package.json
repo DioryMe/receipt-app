@@ -23,7 +23,7 @@
     "enzyme-adapter-react-16": "1.1.1",
     "jsdom": "11.12.0",
     "jsdom-global": "3.0.2",
-    "diograph-search-create": "*",
+    "diograph-search-create": "../diograph-search-create",
     "diograph-upload": "../diograph-upload"
   },
   "dependencies": {
