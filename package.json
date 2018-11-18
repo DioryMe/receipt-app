@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "start": "npx webpack && cp ./app/index.html ./dist && npx webpack-dev-server --port 4205 --content-base dist/ --inline --hot",
-    "test": "npx tsc && npx jasmine JASMINE_CONFIG_PATH=jasmine.json"
+    "test": "npx tsc && npx jasmine JASMINE_CONFIG_PATH=jasmine.json",
+    "compile": "npx webpack"
   },
   "author": "",
   "license": "ISC",
