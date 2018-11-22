@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
   mode: "development",
   entry: "./app/index.tsx",
@@ -9,13 +11,16 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [
-          { loader: 'ts-loader' }
-        ]
+        use: [ { loader: 'ts-loader' } ]
       }
     ]
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js']
-  }
+  },
+  plugins: [
+    new webpack.EnvironmentPlugin({
+      'DIOGRAPH_SERVER_HOST': 'http://localhost:3000'
+    })
+  ]
 };
