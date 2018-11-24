@@ -4,14 +4,14 @@ module.exports = {
   mode: "development",
   entry: "./app/index.tsx",
   output: {
-    filename: "./dist/bundle.js",
-    path: __dirname,
+    path: __dirname + "/dist",
+    filename: "bundle.js"
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
-        use: [ { loader: 'ts-loader' } ]
+        use: [ { loader: "ts-loader" } ]
       }
     ]
   },
@@ -22,5 +22,13 @@ module.exports = {
     new webpack.EnvironmentPlugin({
       'DIOGRAPH_SERVER_HOST': 'http://localhost:3000'
     })
-  ]
+  ],
+  // Example taken from https://medium.com/code-oil/burning-questions-with-answers-to-why-webpack-dev-server-live-reload-does-not-work-6d6390277920
+  devServer: {
+    publicPath: '/',
+    contentBase: "dist",
+    watchContentBase: true,
+    compress: true,
+    port: 4205
+  }
 };
