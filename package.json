@@ -14,7 +14,6 @@
     "@types/node": "10.5.2",
     "@types/react": "16.4.6",
     "@types/react-router-dom": "4.3.0",
-    "diograph-upload": "*",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
     "jasmine": "3.1.0",
@@ -29,6 +28,7 @@
   "dependencies": {
     "diograph-search-create": "0.0.5",
     "diograph-store": "*",
+    "diograph-upload": "*",
     "react": "16.4.1",
     "react-dom": "16.4.1",
     "react-router-dom": "4.3.1"
