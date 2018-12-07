@@ -4,8 +4,9 @@
   "description": "",
   "scripts": {
     "start": "npx webpack && cp ./app/index.html ./dist && npx webpack-dev-server",
-    "test": "npx tsc && npx jasmine JASMINE_CONFIG_PATH=jasmine.json",
-    "compile": "npx webpack"
+    "test": "rm -r ./dist && npx tsc && npx jasmine JASMINE_CONFIG_PATH=jasmine.json",
+    "compile": "npx webpack",
+    "deploy": "npm run compile && surge ./dist diograph-receipt-app.surge.sh"
   },
   "author": "",
   "license": "ISC",
@@ -23,10 +24,11 @@
     "typescript": "2.9.2",
     "webpack": "4.16.1",
     "webpack-cli": "3.1.0",
-    "webpack-dev-server": "3.1.5"
+    "webpack-dev-server": "3.1.5",
+    "clean-webpack-plugin": "*"
   },
   "dependencies": {
-    "diograph-search-create": "0.0.5",
+    "diograph-search-create": "0.0.6",
     "diograph-store": "*",
     "diograph-upload": "*",
     "react": "16.4.1",
